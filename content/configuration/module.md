@@ -35,13 +35,13 @@ A Rule can be separated into three parts — Conditions, Results and nested Rule
 
 There are two input values for the conditions:
 
-1. The resource: An absolute path to the file requested. It's already resolved according the [`resolve` rules](/configuration/resolve).
+1. The resource: An absolute path to the file requested. It's already resolved according to the [`resolve` rules](/configuration/resolve).
 
 2. The issuer: An absolute path to the file of the module which requested the resource. It's the location of the import.
 
 **Example:** When we `import "./style.css"` from `app.js`, the resource is `/path/to/style.css` and the issuer is `/path/to/app.js`.
 
-In a Rule the properties [`test`](#rule-test), [`include`](#rule-include), [`exclude`](#rule-exclude) and [`resource`](#rule-resource) are matched with the resource and the property [`issuer`](#rule-issuer) is matched with the issuer.
+In a Rule, the properties [`test`](#rule-test), [`include`](#rule-include), [`exclude`](#rule-exclude) and [`resource`](#rule-resource) are matched with the resource and the property [`issuer`](#rule-issuer) is matched with the issuer.
 
 When using multiple conditions, all conditions must match.
 
@@ -61,9 +61,9 @@ These properties affect the loaders: [`loader`](#rule-loader), [`options`](#rule
 
 For compatibility also these properties: [`query`](#rule-options-rule-query), [`loaders`](#rule-loaders).
 
-The [`enforce`](#rule-enforce) property affect the loader category. Whether it's an normal, pre- or post- loader.
+The [`enforce`](#rule-enforce) property affects the loader category. Whether it's a normal, pre- or post- loader.
 
-The [`parser`](#rule-parser) property affect the parser options.
+The [`parser`](#rule-parser) property affects the parser options.
 
 
 ## Nested rules
@@ -88,7 +88,7 @@ All normal and pre loaders can be omitted (overridden) by prefixing `-!` in the 
 
 All normal, post and pre loaders can be omitted (overridden) by prefixing `!!` in the request.
 
-Inline loaders and `!` prefixes should not be used as they are non-standard. They may be use by loader generated code.
+Inline loaders and `!` prefixes should not be used as they are non-standard. They may be used by loader generated code.
 
 
 ## `Rule.exclude`
@@ -207,17 +207,17 @@ See [UseEntry](#useentry) for details.
 
 Conditions can be one of these:
 
-* A string: To match the input must start with the provided string. I. e. an absolute directory path, or absolute path to the file.
+* A string: To match the input must start with the provided string (i.e. an absolute directory path, or absolute path to the file).
 * A RegExp: It's tested with the input.
 * A function: It's called with the input and must return a truthy value to match.
 * An array of Conditions: At least one of the Condition must match.
-* A object: All properties must match. Each property has a defined behavior.
+* An object: All properties must match. Each property has a defined behavior.
 
-`{ test: Condition }`: The Condition must match. The convention is the provide a RegExp or array of RegExps here, but it's not enforced.
+`{ test: Condition }`: The Condition must match. The convention is to provide a RegExp or array of RegExps here, but it's not enforced.
 
-`{ include: Condition }`: The Condition must match. The convention is the provide a string or array of strings here, but it's not enforced.
+`{ include: Condition }`: The Condition must match. The convention is to provide a string or array of strings here, but it's not enforced.
 
-`{ exclude: Condition }`: The Condition must NOT match. The convention is the provide a string or array of strings here, but it's not enforced.
+`{ exclude: Condition }`: The Condition must NOT match. The convention is to provide a string or array of strings here, but it's not enforced.
 
 `{ and: [Condition] }`: All Conditions must match.
 
@@ -259,7 +259,7 @@ For compatibility a `query` property is also possible, which is an alias for the
 }
 ```
 
-Note that webpack need to generate an unique module identifier from resource and all loaders including options. It tries to do this with a `JSON.stringify` of the options object. This is fine in 99.9%, but may be not unique if you apply the same loaders with different options to the same resource and the options have some stringified values. It also breaks if the options object cannot be stringified (i. e. circular JSON). Because of this you can have a `ident` property in the options object which is used as unique identifier.
+Note that webpack needs to generate an unique module identifier from resource and all loaders including options. It tries to do this with a `JSON.stringify` of the options object. This is fine in 99.9%, but may be not unique if you apply the same loaders with different options to the same resource and the options have some stringified values. It also breaks if the options object cannot be stringified (i.e. circular JSON). Because of this you can have a `ident` property in the options object which is used as unique identifier.
 
 
 ## Module Contexts
@@ -272,7 +272,7 @@ Example for an `unknown` dynamic dependency: `require`.
 
 Example for an `expr` dynamic dependency: `require(expr)`.
 
-Example for an `wrapped` dynamic dependency: `require("./templates/" + expr)`.
+Example for a `wrapped` dynamic dependency: `require("./templates/" + expr)`.
 
 Here are the available options with their defaults:
 
